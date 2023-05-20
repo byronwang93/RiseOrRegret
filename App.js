@@ -19,41 +19,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        
         <Stack.Screen 
           name="Home"
           component={HomeScreen}
+          options={{headerShown: false}}
         />
 
         <Stack.Screen 
           name="Second"
           component={SecondScreen}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
-
-
-    // <NativeBaseProvider>
-    //   <View style={styles.container}>
-        
-    //     <NavigationContainer>
-    //       <Text>OOOO</Text>
-    //     </NavigationContainer>
-
-
-    //     <Text>Angelina sucks</Text>
-    //     <Button>hi</Button>
-    //     <Text>Alan hihihihi !!!</Text>
-    //     <StatusBar style="auto" />
-    //   </View>
-    // </NativeBaseProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });

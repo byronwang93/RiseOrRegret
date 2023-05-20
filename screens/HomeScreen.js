@@ -1,6 +1,6 @@
 import React from "react";
 // 1. import `NativeBaseProvider` component
-import { NativeBaseProvider, Text, Button } from "native-base";
+import { NativeBaseProvider, Text, Button, Image, Box } from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
 
 import { StatusBar } from "expo-status-bar";
@@ -12,12 +12,17 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.container}>
 
 
-        <Text>Angelina sucks</Text>
-        <Button onPress={() => navigation.navigate('Second')}>
-            navigate to second screen
-        </Button>
+        <Button onPress={() => navigation.navigate('Second')}
+        width="70%">
 
-        <Text>Alan hihihihi !!!</Text>
+            <Box
+            display="flex"
+            flexDirection="row">
+                <Text color="white" paddingTop="1" >Sign in to </Text>
+                <Image size={10} source={require('../assets/twitter.png')}/>
+            </Box>
+
+        </Button>
         <StatusBar style="auto" />
       </View>
     </NativeBaseProvider>
