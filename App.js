@@ -1,13 +1,20 @@
+import React from "react";
+// 1. import `NativeBaseProvider` component
+import { NativeBaseProvider, Text, Button } from "native-base";
+
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Angelina sucks</Text>
-      <Text>Alan</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider>
+      <View style={styles.container}>
+        <Text>Angelina sucks</Text>
+        <Button>hi</Button>
+        <Text>Alan hihihihi !!!</Text>
+        <StatusBar style="auto" />
+      </View>
+    </NativeBaseProvider>
   );
 }
 
