@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import HomeScreen from "./screens/HomeScreen";
 import SecondScreen from "./screens/SecondScreen";
+import AlarmClock from "./screens/AlarmClock";
 
 import registerNNPushToken from "native-notify";
 
@@ -20,33 +21,27 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        
+        <Stack.Screen 
+          name="Home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
 
-        <Stack.Screen name="Second" component={SecondScreen} />
+        <Stack.Screen 
+          name="Second"
+          component={SecondScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="AlarmClock"
+          component={AlarmClock}
+          options={{headerShown: false}}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
-
-    // <NativeBaseProvider>
-    //   <View style={styles.container}>
-
-    //     <NavigationContainer>
-    //       <Text>OOOO</Text>
-    //     </NavigationContainer>
-
-    //     <Text>Angelina sucks</Text>
-    //     <Button>hi</Button>
-    //     <Text>Alan hihihihi !!!</Text>
-    //     <StatusBar style="auto" />
-    //   </View>
-    // </NativeBaseProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });

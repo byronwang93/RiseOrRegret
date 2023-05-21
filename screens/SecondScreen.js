@@ -2,7 +2,6 @@ import React from "react";
 // 1. import `NativeBaseProvider` component
 import { NativeBaseProvider, Text, Button } from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
-
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 
