@@ -28,7 +28,7 @@ Notifications.setNotificationHandler({
 export default function AlarmClock() {
   const [expoPushToken, setExpoPushToken] = useState("");
   const [currentTime, setCurrentTime] = useState(null);
-  const [alarmTime, setAlarmTime] = useState("No Alarm Set");
+  const [alarmTime, setAlarmTime] = useState("No Alarm");
   const [isAlarmOn, setIsAlarmOn] = useState(false);
   const [notification, setNotification] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -212,7 +212,7 @@ export default function AlarmClock() {
       width: 235,
       height: 38,
       color: "#F3F4F6",
-      paddingLeft: 25,
+      paddingLeft: 38,
       marginBottom: 5,
     },
     button: {
