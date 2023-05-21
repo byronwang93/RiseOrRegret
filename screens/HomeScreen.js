@@ -84,7 +84,7 @@ export default function HomeScreen({ navigation }) {
             alt="logo"
             size={400}
             marginRight={240}
-            marginTop={200}
+            marginTop={100}
             source={require("../assets/final_logo.png")}
           />
 
@@ -93,44 +93,45 @@ export default function HomeScreen({ navigation }) {
             bold
             color="#F3F4F6"
             paddingBottom="1"
-            paddingTop="5"
-            paddingLeft="75"
-          >
+            // paddingTop="5"
+            paddingLeft="90">
             Rise or Regret
           </Text>
 
-          <Box paddingLeft="90">
-            <Button
-              borderRadius="full"
-              backgroundColor="transparent"
-              variant="outline"
-              borderWidth="4"
-              borderColor="#C5E2FF"
-              width="80%"
-              height="24%"
-              paddingRight="7"
-              paddingLeft="10"
-              onPress={() => navigation.navigate("Second")}
-            >
-              <Box display="flex" flexDirection="row">
-                <Image
-                  alt="twitter"
-                  size={10}
-                  source={require("../assets/twitter.png")}
-                />
-                <Text bold color="white" paddingTop="2" paddingLeft="1">
-                  Sign in with Twitter{" "}
-                </Text>
-              </Box>
-            </Button>
-          </Box>
+          <Button onPress={() => navigation.navigate("AlarmClock")} 
+           borderRadius="full"
+           backgroundColor="transparent"
+           variant="outline"
+           borderWidth="4"
+           borderColor="#C5E2FF"
+           width="31%"
+           height="6%">
+            <Image
+              alt="home_button"
+              size={4}
+              source={require("../assets/Home.png")}
+            />
+          </Button>
 
-          <Button onPress={() => navigation.navigate("AlarmClock")}>
-            <Text>Hi</Text>
-          </Button>
-          <Button disabled={isLoading}>
+          {/* <Button onPress={() => navigation.navigate("AlarmClock")} 
+           borderRadius="full"
+           backgroundColor="transparent"
+           variant="outline"
+           borderWidth="4"
+           borderColor="#C5E2FF"
+           width="31%"
+           height="14%">
+            <Image
+              alt="home_button"
+              size={4}
+              source={require("../assets/Home.png")}
+              marginTop={1}
+            />
+          </Button> */}
+          
+          {/* <Button onPress={sendSMS} disabled={isLoading}>
             <Text>Twilio test</Text>
-          </Button>
+          </Button> */}
 
           <StatusBar style="auto" />
         </Box>

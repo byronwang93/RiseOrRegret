@@ -182,50 +182,51 @@ export default function AlarmClock() {
           marginLeft={20}
           source={require("../assets/Clouds_bottom.png")}
         />
-      </View>
-    </NativeBaseProvider>
-  );
-}
+        </View>
+      </NativeBaseProvider>
+    );
+  }
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#120A31',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    text: {
+      color: "white",
+    },
+    currentTimeText: {
+      fontSize: 20,
+      color: "#C5E2FF",
+    },
+    currentTime: {
+      fontSize: 55,
+      color: "#F3F4F6",
+      marginTop: 10,
+      marginBottom: 10,
+    },
+    alarmTime: {
+      fontSize: 17,
+      width: 235,
+      height: 38,
+      color: "#F3F4F6",
+      paddingLeft: 25,
+      marginBottom: 5,
+    },
+    button: {
+      backgroundColor: '#C5E2FF',
+      padding: 11,
+      width: "58%",
+      height: "5%",
+      paddingLeft: 60,
+      borderRadius: "25",
+      marginBottom: 10,
+    },
+    buttonText: {
+      color: '#140C34',
+      fontSize: 18,
+    },
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#120A31",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "white",
-  },
-  currentTimeText: {
-    fontSize: 20,
-    color: "#C5E2FF",
-  },
-  currentTime: {
-    fontSize: 55,
-    color: "#F3F4F6",
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  alarmTime: {
-    fontSize: 17,
-    width: 235,
-    height: 38,
-    color: "#F3F4F6",
-    paddingLeft: 10,
-    marginBottom: 5,
-  },
-  button: {
-    backgroundColor: "#C5E2FF",
-    padding: 11,
-    width: "58%",
-    height: "5%",
-    paddingLeft: 60,
-    borderRadius: "25",
-    marginBottom: 10,
-  },
-  buttonText: {
-    color: "#140C34",
-    fontSize: 18,
-  },
-});
