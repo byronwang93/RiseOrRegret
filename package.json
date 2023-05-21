@@ -23,7 +23,10 @@
     "react-native": "0.71.8",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.20.0",
-    "react-native-svg": "^12.1.1"
+    "react-native-svg": "^12.1.1",
+    "react-native-twitter": "^0.2.1",
+    "react-native-twitter-signin": "^1.1.1",
+    "twilio": "^4.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
