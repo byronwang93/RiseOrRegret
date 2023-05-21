@@ -43,8 +43,30 @@ export default function AlarmClock() {
     return (
       <NativeBaseProvider>
         <View style={styles.container}>
+
+            <Box width="100%" height="100%" backgroundColor="#64588D">
+                <Text style={styles.currentTime}>{currentTime}</Text>
+          
+                <Text style={styles.alarmTime}>Alarm time: {alarmTime}</Text>
+          
+                <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
+                    <Text style={styles.buttonText}>{isAlarmOn ? 'Turn Off Alarm' : 'Turn On Alarm'}</Text>
+                </TouchableOpacity>
+          
+                <Box marginTop="6" display="flex" flexDirection="row">
+                    <Input width="50%" placeholder="Edit Time" value={value} onChangeText={text => {
+                        setValue(text)
+                    }} />
+                    <Button onPress={() => {
+                        setAlarmTime(value)
+                    }}>
+                        Click me
+                    </Button>
+                </Box>
+
+            </Box>
             
-          <Text style={styles.currentTime}>{currentTime}</Text>
+          {/* <Text style={styles.currentTime}>{currentTime}</Text>
           
           <Text style={styles.alarmTime}>Alarm time: {alarmTime}</Text>
           
@@ -61,7 +83,7 @@ export default function AlarmClock() {
             }}>
                 Click me
             </Button>
-          </Box>
+          </Box> */}
 
 
         </View>
