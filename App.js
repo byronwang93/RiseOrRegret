@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 // 1. import `NativeBaseProvider` component
 // import { NativeBaseProvider, Text, Button } from "native-base";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // import { StatusBar } from "expo-status-bar";
@@ -10,35 +10,28 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import SecondScreen from "./screens/SecondScreen";
 
+import registerNNPushToken from "native-notify";
 
 const Stack = createNativeStackNavigator();
 
-
-
 export default function App() {
+  registerNNPushToken(8117, "T2roOCBtQgluMITKNtsk20");
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="Home"
-          component={HomeScreen}
-        />
+        <Stack.Screen name="Home" component={HomeScreen} />
 
-        <Stack.Screen 
-          name="Second"
-          component={SecondScreen}
-        />
+        <Stack.Screen name="Second" component={SecondScreen} />
       </Stack.Navigator>
     </NavigationContainer>
 
-
     // <NativeBaseProvider>
     //   <View style={styles.container}>
-        
+
     //     <NavigationContainer>
     //       <Text>OOOO</Text>
     //     </NavigationContainer>
-
 
     //     <Text>Angelina sucks</Text>
     //     <Button>hi</Button>
