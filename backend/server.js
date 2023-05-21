@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const twilio = require("twilio");
 const cors = require("cors");
 
 const app = express();
-const accountSid = "ACc5a3fb819c2cc850f47fc84abbeff7f6";
-const authToken = "0852b886c0af1dfbcf75d655df6cdd72";
+const accountSid = process.env.TWILIO_SID_KEY;
+const authToken = process.env.TWILIO_TOKEN_KEY;
 const client = twilio(accountSid, authToken);
 
 app.use(cors());
@@ -32,9 +33,7 @@ app.get("/send-sms", (req, res) => {
     });
 });
 
-const port = 3000;
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
   console.log("this is so fun");
 });
