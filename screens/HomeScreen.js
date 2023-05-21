@@ -78,6 +78,7 @@ export default function HomeScreen({ navigation }) {
         >
           <Image
             alt="logo"
+            size={400}
             marginRight={240}
             marginTop={200}
             source={require("../assets/final_logo.png")}
@@ -87,7 +88,7 @@ export default function HomeScreen({ navigation }) {
             fontSize="40" 
             bold color="#F3F4F6" 
             paddingBottom="1"
-            paddingTop="30"
+            paddingTop="5"
             paddingLeft="75">
             Rise or Regret
           </Text>
@@ -147,5 +148,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#120A31",
     alignItems: "center",
     justifyContent: "center",
+    fontFamily: "Poppins-Bold"
   },
 });
