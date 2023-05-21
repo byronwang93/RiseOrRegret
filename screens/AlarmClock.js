@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button, Input, Box, Center, Image } from "native-base";
+import { NativeBaseProvider, Button, Input, Box, Image } from "native-base";
 
 
 import React, { useState, useEffect } from 'react';
@@ -73,6 +73,7 @@ export default function AlarmClock() {
               paddingLeft={8}
               placeholder="Edit Time" 
               borderColor="#C5E2FF"
+              color="white"
               value={value} 
               onChangeText={text => {
                 setValue(text)
@@ -123,7 +124,7 @@ export default function AlarmClock() {
     alarmTime: {
       fontSize: 15,
       backgroundColor: "#C5E2FF",
-      borderRadius: "50",
+      borderRadius: 10,
       width: 235,
       height: 38,
       color: "#140C34",
