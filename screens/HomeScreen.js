@@ -1,7 +1,5 @@
 import React from "react";
-// 1. import `NativeBaseProvider` component
 import { NativeBaseProvider, Text, Button, Image, Box } from "native-base";
-import { NavigationContainer } from "@react-navigation/native";
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
@@ -66,17 +64,6 @@ export default function HomeScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
-        <Button
-          onPress={() => sendPushNotification(expoPushTokenAgain, title, body)}
-        >
-          Test button
-        </Button>
-        <Button title="Press to Send Notification" onPress={handleClick}>
-          Press to Send Notification
-        </Button>
-        <Button onPress={() => navigation.navigate("Second")}>
-          navigate to second screen
-        </Button>
         <StatusBar style="auto" />
         <Box
           backgroundColor="#1B1F22"
