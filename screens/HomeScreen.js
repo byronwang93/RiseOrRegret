@@ -1,5 +1,13 @@
 import React from "react";
-import { NativeBaseProvider, Text, Button, Image, Box, Container, Content } from "native-base";
+import {
+  NativeBaseProvider,
+  Text,
+  Button,
+  Image,
+  Box,
+  Container,
+  Content,
+} from "native-base";
 
 import { StatusBar } from "expo-status-bar";
 import { ImageBackground, StyleSheet, View } from "react-native";
@@ -31,34 +39,6 @@ export default function HomeScreen({ navigation }) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const sendSMS = async () => {
-    try {
-      setIsLoading(true);
-      console.log("first one in");
-      const recipientPhoneNumber = "+16047163698";
-      // const response = await fetch(
-      //   `http://localhost:3000/send-sms?to=${recipientPhoneNumber}`
-      // );
-      // const response = await fetch(`http://localhost:3000/send-sms`);
-      const response = await axios
-        .get(`http://207.23.196.207:3000/send-sms`)
-        .catch((error) => {
-          console.log(error, " is the error");
-        });
-      console.log(response, " is the response");
-
-      const data = await response.json();
-
-      console.log(data, " is the data"); // Handle the response data as per your requirements
-
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      console.error(error);
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
@@ -86,12 +66,7 @@ export default function HomeScreen({ navigation }) {
     await sendPushNotification(expoPushToken);
   };
 
-  // Usage
-  const expoPushTokenAgain = expoPushToken;
-  const title = "Ring ring";
-  const body = "Your twitter is cancelled";
   const bgImage = require("../assets/Background.png");
-  
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -113,17 +88,18 @@ export default function HomeScreen({ navigation }) {
             source={require("../assets/final_logo.png")}
           />
 
-          <Text 
-            fontSize="40" 
-            bold color="#F3F4F6" 
+          <Text
+            fontSize="40"
+            bold
+            color="#F3F4F6"
             paddingBottom="1"
             paddingTop="5"
-            paddingLeft="75">
+            paddingLeft="75"
+          >
             Rise or Regret
           </Text>
 
-          <Box
-            paddingLeft="90">
+          <Box paddingLeft="90">
             <Button
               borderRadius="full"
               backgroundColor="transparent"
@@ -152,7 +128,7 @@ export default function HomeScreen({ navigation }) {
           <Button onPress={() => navigation.navigate("AlarmClock")}>
             <Text>Hi</Text>
           </Button>
-          <Button onPress={sendSMS} disabled={isLoading}>
+          <Button disabled={isLoading}>
             <Text>Twilio test</Text>
           </Button>
 
@@ -180,6 +156,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#120A31",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "Futura"
+    fontFamily: "Futura",
   },
 });
