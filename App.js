@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import HomeScreen from "./screens/HomeScreen";
 import SecondScreen from "./screens/SecondScreen";
+import AlarmClock from "./screens/AlarmClock";
 
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,14 @@ export default function App() {
           component={SecondScreen}
           options={{headerShown: false}}
         />
+
+        <Stack.Screen
+          name="AlarmClock"
+          component={AlarmClock}
+          options={{headerShown: false}}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

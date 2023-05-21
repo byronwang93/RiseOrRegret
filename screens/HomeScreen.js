@@ -12,18 +12,23 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.container}>
           <Box backgroundColor="#1B1F22" width="full" height="full" flex={1} justifyContent="center" alignItems="center" p={4}>
 
-            <Image borderRadius={80} marginBottom="10" source={require('../assets/logo2.png')}/>
+            <Image alt="logo" borderRadius={80} marginBottom="8" source={require('../assets/logo2.png')}/>
 
             <Text fontSize="3xl" bold color="white" paddingBottom="2">Rise or Regret</Text>
 
-            <Button borderRadius="full" backgroundColor="#1B1F22" variant="outline" borderWidth="2" borderColor="white" width="70%" paddingRight="8" onPress={() => navigation.navigate('Second')}>
+            <Button marginTop="3" borderRadius="full" backgroundColor="#1B1F22" variant="outline" borderWidth="2" borderColor="white" width="70%" paddingRight="8" onPress={() => navigation.navigate('Second')}>
 
                 <Box display="flex" flexDirection="row">
-                    <Image size={10} source={require('../assets/twitter.png')}/>
+                    <Image alt="twitter" size={10} source={require('../assets/twitter.png')}/>
                     <Text bold color="white" paddingTop="2" paddingLeft="2"  >Sign in with Twitter </Text>
                 </Box>
 
             </Button>
+
+            <Button onPress={() => navigation.navigate('AlarmClock')}>
+                <Text>Hi</Text>
+            </Button>
+
             <StatusBar style="auto" />
 
           </Box>
