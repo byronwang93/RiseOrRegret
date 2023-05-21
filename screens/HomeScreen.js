@@ -123,35 +123,36 @@ export default function HomeScreen({ navigation }) {
           </Text>
 
           <Box
-            paddingLeft="90">
+            paddingLeft="220">
             <Button
               borderRadius="full"
               backgroundColor="transparent"
               variant="outline"
               borderWidth="4"
               borderColor="#C5E2FF"
-              width="80%"
+              width="75%"
               height="24%"
-              paddingRight="7"
-              paddingLeft="10"
               onPress={() => navigation.navigate("Second")}
             >
               <Box display="flex" flexDirection="row">
+                
                 <Image
-                  alt="twitter"
-                  size={10}
-                  source={require("../assets/twitter.png")}
+                  alt="home_button"
+                  size={4}
+                  source={require("../assets/Home.png")}
                 />
-                <Text bold color="white" paddingTop="2" paddingLeft="1">
-                  Sign in with Twitter{" "}
+                <Button onPress={() => navigation.navigate("AlarmClock")}>
+                <Text bold color="#F3F4F6" paddingLeft="3">
+                  Home{" "}
                 </Text>
+                </Button>
               </Box>
             </Button>
           </Box>
 
-          <Button onPress={() => navigation.navigate("AlarmClock")}>
+          {/* <Button onPress={() => navigation.navigate("AlarmClock")}>
             <Text>Hi</Text>
-          </Button>
+          </Button> */}
           <Button onPress={sendSMS} disabled={isLoading}>
             <Text>Twilio test</Text>
           </Button>
