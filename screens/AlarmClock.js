@@ -1,106 +1,187 @@
-import { NativeBaseProvider, Button, Input, Box, Image, Center } from "native-base";
+import {
+  NativeBaseProvider,
+  Button,
+  Input,
+  Box,
+  Image,
+  Center,
+} from "native-base";
 
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import * as Notifications from "expo-notifications";
+import {
+  registerForPushNotificationsAsync,
+  sendPushNotification,
+  sendSMS,
+} from "../helpers/notificationFunctions";
+import axios from "axios";
 
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function AlarmClock() {
-    const [currentTime, setCurrentTime] = useState(null);
-    const [alarmTime, setAlarmTime] = useState('No Alarm Set');
-    const [isAlarmOn, setIsAlarmOn] = useState(false);
-  
-    useEffect(() => {
-      const interval = setInterval(() => {
-        const newTime = getCurrentTime();
-        setCurrentTime(newTime); // this is where the time gets set and updated
-        checkAlarm();
-      }, 1000);
-  
-      return () => clearInterval(interval);
-    }, [currentTime]);
-  
-    const getCurrentTime = () => {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      return `${hours}:${minutes}:${seconds}`;
-    };
-  
-    const checkAlarm = () => {
-      if (isAlarmOn && currentTime == alarmTime) {
-        alert('Wake up!');
-        setIsAlarmOn(false);
-      }
-    };
-  
-    const toggleAlarm = () => {
-      setIsAlarmOn(!isAlarmOn);
-    };
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [currentTime, setCurrentTime] = useState(null);
+  const [alarmTime, setAlarmTime] = useState("No Alarm Set");
+  const [isAlarmOn, setIsAlarmOn] = useState(false);
+  const [notification, setNotification] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const [value, setValue] = useState("")
-  
-    return (
-      <NativeBaseProvider>
-        <View style={styles.container}>
+  const notificationListener = useRef();
+  const responseListener = useRef();
 
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response, " is the response");
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newTime = getCurrentTime();
+      setCurrentTime(newTime); // this is where the time gets set and updated
+      checkAlarm();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [currentTime]);
+
+  const getCurrentTime = () => {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  };
+
+  const expoPushTokenAgain = expoPushToken;
+  const title = "RING RING";
+  const body = "You have 30 seconds until you get cancelled :)";
+
+  const checkAlarm = async () => {
+    if (isAlarmOn && currentTime == alarmTime) {
+      setIsAlarmOn(false);
+      sendPushNotification(expoPushTokenAgain, title, body);
+      await sendSMS();
+    }
+  };
+
+  const toggleAlarm = () => {
+    setIsAlarmOn(!isAlarmOn);
+  };
+
+  const [value, setValue] = useState("");
+
+  const sendSMS = async () => {
+    try {
+      setIsLoading(true);
+      const recipientPhoneNumber = "+16047205368";
+      // const response = await fetch(
+      //   `http://localhost:3000/send-sms?to=${recipientPhoneNumber}`
+      // );
+      // const response = await fetch(`http://localhost:3000/send-sms`);
+      const response = await axios
+        .get(`http://207.23.196.207:3000/send-sms`)
+        .catch((error) => {
+          console.log(error, " is the error");
+        });
+      console.log(response, " is the response");
+
+      const data = await response.json();
+
+      console.log(data, " is the data"); // Handle the response data as per your requirements
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      console.error(error);
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <NativeBaseProvider>
+      <View style={styles.container}>
         <Image
-            alt="clouds"
-            paddingBottom={30}
-            marginBottom={5}
-            source={require("../assets/Clouds.png")}
-        />
-            
-          <Text style={styles.currentTimeText}>Hello! The current time is</Text>
-          <Text style={styles.currentTime}>{currentTime}</Text>
-          
-          <View style={styles.alarmTime}>
-            <Text style={styles.text}>Current Alarm: {alarmTime}</Text>
-          </View>
-          
-          <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
-            <Text style={styles.buttonText}>{isAlarmOn ? 'Turn Off Alarm' : 'Turn On Alarm'}</Text>
-          </TouchableOpacity>
-          
-          <Box 
-            marginTop="2" 
-            display="flex" 
-            flexDirection="row">
-            <Input 
-              width="30%" 
-              borderRadius="full"
-              backgroundColor="transparent"
-              variant="outline"
-              borderWidth="4"
-              paddingLeft={8}
-              placeholder="Edit Time" 
-              borderColor="#C5E2FF"
-              color="white"
-              value={value} 
-              onChangeText={text => {
-                setValue(text)
-            }} />
-            <Button 
-              onPress={() => {
-                setAlarmTime(value)
-            }}
-              marginLeft={3}
-              borderRadius="full"
-              backgroundColor="transparent"
-              variant="outline"
-              borderWidth="4"
-              width="25%"
-              borderColor="#C5E2FF">
-              Save
-            </Button>
-          </Box>
-          <Image
-            alt="bottom_clouds"
-            marginTop={7}
-            marginLeft={20}
-            source={require("../assets/Clouds_bottom.png")}
+          alt="clouds"
+          paddingBottom={30}
+          marginBottom={5}
+          source={require("../assets/Clouds.png")}
         />
 
+        <Text style={styles.currentTimeText}>Hello! The current time is</Text>
+        <Text style={styles.currentTime}>{currentTime}</Text>
+
+        <View style={styles.alarmTime}>
+          <Text style={styles.text}>Current Alarm: {alarmTime}</Text>
+        </View>
+
+        <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
+          <Text style={styles.buttonText}>
+            {isAlarmOn ? "Turn Off Alarm" : "Turn On Alarm"}
+          </Text>
+        </TouchableOpacity>
+
+        <Box marginTop="2" display="flex" flexDirection="row">
+          <Input
+            width="30%"
+            borderRadius="full"
+            backgroundColor="transparent"
+            variant="outline"
+            borderWidth="4"
+            paddingLeft={8}
+            placeholder="Edit Time"
+            borderColor="#C5E2FF"
+            color="white"
+            value={value}
+            onChangeText={(text) => {
+              setValue(text);
+            }}
+          />
+          <Button
+            onPress={() => {
+              setAlarmTime(value);
+            }}
+            marginLeft={3}
+            borderRadius="full"
+            backgroundColor="transparent"
+            variant="outline"
+            borderWidth="4"
+            width="25%"
+            borderColor="#C5E2FF"
+          >
+            Save
+          </Button>
+        </Box>
+        <Image
+          alt="bottom_clouds"
+          marginTop={7}
+          marginLeft={20}
+          source={require("../assets/Clouds_bottom.png")}
+        />
         </View>
       </NativeBaseProvider>
     );
@@ -148,3 +229,4 @@ export default function AlarmClock() {
       fontSize: 18,
     },
   });
+

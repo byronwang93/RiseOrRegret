@@ -51,3 +51,31 @@ export async function sendPushNotification(expoPushToken, title, body) {
     console.error("Error sending push notification:", error);
   }
 }
+
+export const sendSMS = async () => {
+  try {
+    setIsLoading(true);
+    console.log("first one in");
+    const recipientPhoneNumber = "+16047205368";
+    // const response = await fetch(
+    //   `http://localhost:3000/send-sms?to=${recipientPhoneNumber}`
+    // );
+    // const response = await fetch(`http://localhost:3000/send-sms`);
+    const response = await axios
+      .get(`http://207.23.196.207:3000/send-sms`)
+      .catch((error) => {
+        console.log(error, " is the error");
+      });
+    console.log(response, " is the response");
+
+    const data = await response.json();
+
+    console.log(data, " is the data"); // Handle the response data as per your requirements
+
+    setIsLoading(false);
+  } catch (error) {
+    console.log(error);
+    console.error(error);
+    setIsLoading(false);
+  }
+};
