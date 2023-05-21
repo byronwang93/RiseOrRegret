@@ -109,33 +109,35 @@ export default function HomeScreen({ navigation }) {
             alt="logo"
             size={400}
             marginRight={240}
-            marginTop={100}
+            marginTop={75}
             source={require("../assets/final_logo.png")}
           />
 
           <Text 
             fontSize="40" 
             bold color="#F3F4F6" 
-            paddingBottom="1"
             // paddingTop="5"
             paddingLeft="90">
             Rise or Regret
           </Text>
 
-          <Button onPress={() => navigation.navigate("AlarmClock")} 
-           borderRadius="full"
-           backgroundColor="transparent"
-           variant="outline"
-           borderWidth="4"
-           borderColor="#C5E2FF"
-           width="31%"
-           height="6%">
-            <Image
-              alt="home_button"
-              size={4}
-              source={require("../assets/Home.png")}
-            />
-          </Button>
+          <Box paddingLeft={275}>
+            <Button onPress={() => navigation.navigate("AlarmClock")} 
+              marginLeft="1"
+              borderRadius="full"
+              backgroundColor="transparent"
+              variant="outline"
+              borderWidth="4"
+              borderColor="#C5E2FF"             
+              width="85%"
+              height="10">
+                <Image
+                  alt="home_button"
+                  size={4}
+                  source={require("../assets/Home.png")}
+                />
+            </Button>
+          </Box>
 
           {/* <Button onPress={() => navigation.navigate("AlarmClock")} 
            borderRadius="full"
@@ -178,9 +180,8 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#120A31",
+    backgroundColor: "#160E35",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "Futura"
   },
 });
