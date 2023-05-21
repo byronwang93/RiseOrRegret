@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "RiseOrRegret",
-    "slug": "RiseOrRegret",
+    "slug": "riseorregret",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c862a64d-4174-48e8-b335-967f69b6628e"
+      }
+    },
+    "owner": "byronwang93"
   }
 }
