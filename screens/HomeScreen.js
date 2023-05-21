@@ -94,28 +94,30 @@ export default function HomeScreen({ navigation }) {
             color="#F3F4F6"
             paddingBottom="1"
             // paddingTop="5"
-            paddingLeft="90">
+            paddingLeft="90"
+          >
             Rise or Regret
           </Text>
 
           <Box paddingLeft={275}>
-            <Button onPress={() => navigation.navigate("AlarmClock")} 
+            <Button
+              onPress={() => navigation.navigate("AlarmClock")}
               marginLeft="1"
               borderRadius="full"
               backgroundColor="transparent"
               variant="outline"
               borderWidth="4"
-              borderColor="#C5E2FF"             
+              borderColor="#C5E2FF"
               width="85%"
-              height="10">
-                <Image
-                  alt="home_button"
-                  size={4}
-                  source={require("../assets/Home.png")}
-                />
+              height="10"
+            >
+              <Image
+                alt="home_button"
+                size={4}
+                source={require("../assets/Home.png")}
+              />
             </Button>
           </Box>
-
 
           {/* <Button onPress={() => navigation.navigate("AlarmClock")} 
            borderRadius="full"
@@ -132,24 +134,13 @@ export default function HomeScreen({ navigation }) {
               marginTop={1}
             />
           </Button> */}
-          
+
           {/* <Button onPress={sendSMS} disabled={isLoading}>
             <Text>Twilio test</Text>
           </Button> */}
 
           <StatusBar style="auto" />
         </Box>
-
-        {/* <Button borderRadius="full" backgroundColor="#1B1F22" variant="outline" borderWidth="2" borderColor="white" onPress={() => navigation.navigate('Second')} width="70%">
-
-            <Box display="flex" flexDirection="row">
-                <Image size={10} source={require('../assets/twitter.png')}/>
-                <Text bold color="white" paddingTop="1" paddingLeft="2"  >Sign in with Twitter </Text>
-            </Box>
-
-        </Button>
-        <StatusBar style="auto" /> */}
-        {/* </LinearGradient> */}
       </View>
     </NativeBaseProvider>
   );
