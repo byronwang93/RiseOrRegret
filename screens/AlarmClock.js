@@ -1,4 +1,4 @@
-import { NativeBaseProvider, Button, Input, Box, Center, Image } from "native-base";
+import { NativeBaseProvider, Button, Input, Box, Image, Center } from "native-base";
 
 
 import React, { useState, useEffect } from 'react';
@@ -54,7 +54,9 @@ export default function AlarmClock() {
           <Text style={styles.currentTimeText}>Hello! The current time is</Text>
           <Text style={styles.currentTime}>{currentTime}</Text>
           
-          <Text style={styles.alarmTime}>Current Alarm: {alarmTime}</Text>
+          <View style={styles.alarmTime}>
+            <Text>Current Alarm: {alarmTime}</Text>
+          </View>
           
           <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
             <Text style={styles.buttonText}>{isAlarmOn ? 'Turn Off Alarm' : 'Turn On Alarm'}</Text>
@@ -73,6 +75,7 @@ export default function AlarmClock() {
               paddingLeft={8}
               placeholder="Edit Time" 
               borderColor="#C5E2FF"
+              color="white"
               value={value} 
               onChangeText={text => {
                 setValue(text)
