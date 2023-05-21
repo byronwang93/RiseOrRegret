@@ -55,7 +55,7 @@ export default function AlarmClock() {
           <Text style={styles.currentTime}>{currentTime}</Text>
           
           <View style={styles.alarmTime}>
-            <Text>Current Alarm: {alarmTime}</Text>
+            <Text style={styles.text}>Current Alarm: {alarmTime}</Text>
           </View>
           
           <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
@@ -113,9 +113,12 @@ export default function AlarmClock() {
       alignItems: 'center',
       justifyContent: 'center',
     },
+    text: {
+      color: "white",
+    },
     currentTimeText: {
       fontSize: 20,
-      color: "#C5E2FF"
+      color: "#C5E2FF",
     },
     currentTime: {
       fontSize: 55,
