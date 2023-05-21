@@ -1,14 +1,12 @@
-import { NativeBaseProvider, Button, Alert, Input} from "native-base";
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from "expo-status-bar";
+import { NativeBaseProvider, Button, Input, Box} from "native-base";
 
-//new
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function AlarmClock() {
     const [currentTime, setCurrentTime] = useState(null);
-    const [alarmTime, setAlarmTime] = useState('19:35:00');
+    const [alarmTime, setAlarmTime] = useState('No Alarm Currently Set');
     const [isAlarmOn, setIsAlarmOn] = useState(false);
   
     useEffect(() => {
@@ -26,7 +24,7 @@ export default function AlarmClock() {
       const hours = now.getHours().toString().padStart(2, '0');
       const minutes = now.getMinutes().toString().padStart(2, '0');
       const seconds = now.getSeconds().toString().padStart(2, '0');
-      return `${hours}:${minutes}:${seconds}`;
+      return `Current Time: ${hours}:${minutes}:${seconds}`;
     };
   
     const checkAlarm = () => {
@@ -48,19 +46,22 @@ export default function AlarmClock() {
             
           <Text style={styles.currentTime}>{currentTime}</Text>
           
-          <Text style={styles.alarmTime}>{alarmTime}</Text>
+          <Text style={styles.alarmTime}>Alarm time: {alarmTime}</Text>
           
           <TouchableOpacity style={styles.button} onPress={toggleAlarm}>
             <Text style={styles.buttonText}>{isAlarmOn ? 'Turn Off Alarm' : 'Turn On Alarm'}</Text>
           </TouchableOpacity>
           
-        
-          <Input placeholder="Time" value={value} onChangeText={text => {
-              setValue(text)
-          }} />
-          <Button onPress={() => {
-              setAlarmTime(value)
-          }}>Click me</Button>
+          <Box marginTop="6" display="flex" flexDirection="row">
+            <Input width="50%" placeholder="Edit Time" value={value} onChangeText={text => {
+                setValue(text)
+            }} />
+            <Button onPress={() => {
+                setAlarmTime(value)
+            }}>
+                Click me
+            </Button>
+          </Box>
 
 
         </View>
