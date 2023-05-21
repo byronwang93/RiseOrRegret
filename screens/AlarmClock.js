@@ -131,7 +131,7 @@ export default function AlarmClock() {
       width: 235,
       height: 38,
       color: "#F3F4F6",
-      paddingLeft: 10,
+      paddingLeft: 25,
       marginBottom: 5,
     },
     button: {
