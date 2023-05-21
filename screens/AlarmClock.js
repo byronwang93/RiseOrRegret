@@ -91,7 +91,7 @@ export default function AlarmClock() {
               borderWidth="4"
               width="25%"
               borderColor="#C5E2FF">
-                Save
+              Save
             </Button>
           </Box>
           <Image
@@ -118,21 +118,18 @@ export default function AlarmClock() {
       color: "#C5E2FF"
     },
     currentTime: {
-      fontSize: 50,
+      fontSize: 55,
       color: "#F3F4F6",
       marginTop: 10,
       marginBottom: 10,
     },
     alarmTime: {
-      fontSize: 15,
-      backgroundColor: "#C5E2FF",
-      borderRadius: 16,
-      width: 240,
-      height: 40,
-      color: "#140C34",
-      paddingTop: 9,
-      paddingLeft: 20,
-      marginBottom: 20,
+      fontSize: 17,
+      width: 235,
+      height: 38,
+      color: "#F3F4F6",
+      paddingLeft: 10,
+      marginBottom: 5,
     },
     button: {
       backgroundColor: '#C5E2FF',

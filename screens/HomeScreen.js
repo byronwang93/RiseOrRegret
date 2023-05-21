@@ -148,6 +148,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#120A31",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "Poppins-Bold"
+    fontFamily: "Futura"
   },
 });
