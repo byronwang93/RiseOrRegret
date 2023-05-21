@@ -164,7 +164,7 @@ export default function AlarmClock() {
 
   return (
     <NativeBaseProvider>
-      <View style={styles.container}>
+      <View style={countdownStarted ? styles.darkContainer : styles.container}>
         <Image
           alt="clouds"
           paddingBottom={30}
@@ -257,6 +257,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#120A31",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  darkContainer: {
+    flex: 1,
+    backgroundColor: "#4E3436",
     alignItems: "center",
     justifyContent: "center",
   },
