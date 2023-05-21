@@ -56,7 +56,7 @@ export const sendSMS = async () => {
   try {
     setIsLoading(true);
     console.log("first one in");
-    const recipientPhoneNumber = "+16047205368";
+    const recipientPhoneNumber = "+16047163698";
     // const response = await fetch(
     //   `http://localhost:3000/send-sms?to=${recipientPhoneNumber}`
     // );

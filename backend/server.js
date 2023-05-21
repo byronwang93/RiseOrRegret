@@ -12,10 +12,11 @@ app.use(cors());
 
 app.get("/send-sms", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  const recipientNumber = "+16047205368";
+  const recipientNumber = "+16047163698";
   console.log("WE'RE IN");
   // const recipientNumber = req.query.to; // Get the recipient's phone number from the request query parameters
-  const messageContent = "You suck you fool!"; // The content of the message you want to send
+  const messageContent =
+    "This is UBC's hackathon planning team, nwPlus, and stormhacks sucks!"; // The content of the message you want to send
 
   client.messages
     .create({
